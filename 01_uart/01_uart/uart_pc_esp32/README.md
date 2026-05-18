@@ -127,7 +127,7 @@ Estado del LED: ENCENDIDO
 
 ### ESP32 utilizado
 
-![ESP32 utilizado](../../../imagenes/esp32_zy_devkit_cp2102.jpeg)
+![ESP32 utilizado](../../../imagenes/uart_pc_esp32_led_on.jpeg)
 
 ---
 
