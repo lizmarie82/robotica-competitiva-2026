@@ -5,12 +5,24 @@
 Comprobar la comunicación serial entre la computadora y el ESP32 mediante el Monitor Serial, enviando comandos de texto para controlar un LED.
 
 ## Materiales
+## Hardware utilizado
 
-- ESP32
-- Cable USB
-- PC
-- Arduino IDE
-- LED integrado del ESP32
+| Componente | Modelo / detalle |
+|---|---|
+| Microcontrolador | ESP32 DevKit compatible |
+| Módulo principal | ZY-ESP32 WiFi+BT |
+| Chip USB-Serial | Silicon Labs CP2102 |
+| Regulador de voltaje | AMS1117-3.3 |
+| Puerto usado | COM5 |
+| Pin del LED utilizado | GPIO 2 |
+| Comunicación | USB-Serial / UART |
+| Baud rate | 115200 |
+| Software | Arduino IDE |
+## Placa utilizada
+
+![ESP32 utilizado](../../imagenes/esp32_zy_devkit_cp2102.jpeg)
+
+La placa utilizada es una ESP32 DevKit compatible con módulo ZY-ESP32 WiFi+BT, chip USB-Serial CP2102 y regulador AMS1117-3.3. Fue seleccionada en Arduino IDE como **ESP32 Dev Module**.
 
 ## Protocolo utilizado
 
