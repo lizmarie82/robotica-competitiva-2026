@@ -123,13 +123,13 @@ imagenes/
 
 | Carpeta | Contenido |
 |---|---|
-| `00_documentacion/` | Planes, mapas conceptuales y documentación general |
-| `01_uart/` | Prácticas relacionadas con UART |
-| `02_i2c/` | Sensores y comunicación I2C |
-| `03_pwm/` | Control PWM y manejo de salidas |
-| `04_spi/` | Fundamentos y pruebas SPI |
-| `05_sistema_integrado/` | Integración de múltiples protocolos |
-| `imagenes/` | Evidencias visuales y capturas |
+| [`00_documentacion/`](./00_documentacion) | Planes, mapas conceptuales y documentación general |
+| [`01_uart/`](./01_uart) | Prácticas relacionadas con UART |
+| [`02_i2c/`](./02_i2c) | Sensores y comunicación I2C |
+| [`03_pwm/`](./03_pwm) | Control PWM y manejo de salidas |
+| [`04_spi/`](./04_spi) | Fundamentos y pruebas SPI |
+| [`05_sistema_integrado/`](./05_sistema_integrado) | Integración de múltiples protocolos |
+| [`imagenes/`](./imagenes) | Evidencias visuales y capturas |
 
 ---
 
@@ -150,6 +150,17 @@ Cada práctica debe incluir:
 
 ## Estado actual
 
-🔒 Repositorio privado en fase inicial de desarrollo.
+![Fase 1 en progreso](https://img.shields.io/badge/Fase_1-En_progreso-yellow)
+![Lenguaje](https://img.shields.io/badge/Lenguaje-C%2B%2B%20%2F%20Arduino-blue)
+![Plataforma](https://img.shields.io/badge/Plataforma-ESP32%20%7C%20Arduino-green)
+![Licencia](https://img.shields.io/badge/Licencia-MIT-lightgrey)
 
-Actualmente enfocado en la Fase 1: Comunicaciones en sistemas embebidos.
+Actualmente enfocado en la **Fase 1: Comunicaciones en sistemas embebidos**.
+
+| Fase | Tema | Estado |
+|------|------|--------|
+| Fase 1 | Comunicaciones (UART, I2C, SPI, PWM) | 🔄 En progreso |
+| Fase 2 | Sensores y adquisición de datos | ⏳ Pendiente |
+| Fase 3 | Control y movimiento | ⏳ Pendiente |
+| Fase 4 | Robots móviles autónomos | ⏳ Pendiente |
+| Fase 5 | Visión artificial y sistemas avanzados | ⏳ Pendiente |

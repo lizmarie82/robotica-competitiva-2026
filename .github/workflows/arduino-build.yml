@@ -1,0 +1,31 @@
+name: Compilar sketches Arduino
+
+on:
+  push:
+    branches:
+      - main
+      - 'mejoras/**'
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  compilar:
+    name: Compilar sketch ESP32
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clonar repositorio
+        uses: actions/checkout@v4
+
+      - name: Compilar sketches con arduino-cli
+        uses: arduino/compile-sketches@v1
+        with:
+          fqbn: esp32:esp32:esp32
+          platforms: |
+            - name: esp32:esp32
+              source-url: https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json
+          sketch-paths: |
+            - 01_uart/01_uart/uart_pc_esp32
+          cli-compile-flags: |
+            - --warnings=all

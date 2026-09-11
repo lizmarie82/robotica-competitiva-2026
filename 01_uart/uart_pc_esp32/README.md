@@ -34,7 +34,7 @@ Comprobar la comunicación serial entre la computadora y el ESP32 mediante el Mo
 
 ## Placa utilizada
 
-![ESP32 utilizado](../../../imagenes/esp32_zy_devkit_cp2102.jpeg)
+![ESP32 utilizado](../../imagenes/esp32_zy_devkit_cp2102.jpeg)
 
 La placa utilizada es una ESP32 DevKit compatible con módulo ZY-ESP32 WiFi+BT, chip USB-Serial CP2102 y regulador AMS1117-3.3.
 
@@ -123,11 +123,11 @@ Estado del LED: ENCENDIDO
 
 ### Monitor Serial
 
-![Monitor Serial](../../../imagenes/uart_pc_esp32_monitor_serial.png)
+![Monitor Serial](../../imagenes/uart_pc_esp32_monitor_serial.png)
 
 ### ESP32 utilizado
 
-![ESP32 utilizado](../../../imagenes/uart_pc_esp32_led_on.jpeg)
+![ESP32 utilizado](../../imagenes/uart_pc_esp32_led_on.jpeg)
 
 ---
 
