@@ -1,0 +1,81 @@
+name: Compilar sketches Arduino (multi-plataforma)
+
+on:
+  push:
+    branches:
+      - main
+      - 'mejoras/**'
+  pull_request:
+    branches:
+      - main
+
+jobs:
+
+  compilar-esp32:
+    name: ESP32 — todos los sketches
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: arduino/compile-sketches@v1
+        with:
+          fqbn: esp32:esp32:esp32
+          platforms: |
+            - name: esp32:esp32
+              source-url: https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json
+          libraries: |
+            - name: Adafruit SSD1306
+            - name: Adafruit GFX Library
+            - name: SD
+          sketch-paths: |
+            - 01_uart/uart_pc_esp32
+            - 02_i2c/i2c_scanner_esp32
+            - 02_i2c/i2c_mpu6050_esp32
+            - 02_i2c/i2c_oled_esp32
+            - 03_pwm/pwm_led_fade_esp32
+            - 03_pwm/pwm_servo_esp32
+            - 03_pwm/pwm_motor_dc_esp32
+            - 04_spi/spi_loopback_esp32
+            - 04_spi/spi_sd_esp32
+            - 05_sistema_integrado/sistema_uart_i2c_pwm_esp32
+          cli-compile-flags: |
+            - --warnings=all
+
+  compilar-arduino-uno:
+    name: Arduino UNO — todos los sketches
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: arduino/compile-sketches@v1
+        with:
+          fqbn: arduino:avr:uno
+          libraries: |
+            - name: Adafruit SSD1306
+            - name: Adafruit GFX Library
+            - name: SD
+            - name: Servo
+          sketch-paths: |
+            - 01_uart/uart_pc_arduino_uno
+            - 02_i2c/i2c_scanner_arduino
+            - 02_i2c/i2c_mpu6050_arduino
+            - 02_i2c/i2c_oled_arduino
+            - 03_pwm/pwm_led_fade_arduino
+            - 03_pwm/pwm_servo_arduino
+            - 03_pwm/pwm_motor_dc_arduino
+            - 04_spi/spi_loopback_arduino
+            - 04_spi/spi_sd_arduino
+          cli-compile-flags: |
+            - --warnings=all
+
+  compilar-arduino-mega:
+    name: Arduino Mega 2560 — todos los sketches
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: arduino/compile-sketches@v1
+        with:
+          fqbn: arduino:avr:mega:cpu=atmega2560
+          sketch-paths: |
+            - 01_uart/uart_pc_arduino_mega
+            - 05_sistema_integrado/sistema_uart_i2c_pwm_mega
+          cli-compile-flags: |
+            - --warnings=all
