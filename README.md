@@ -55,55 +55,42 @@ Al finalizar esta fase se espera poder:
 
 ---
 
+## Plataformas
+
+Las prácticas se desarrollan en múltiples microcontroladores para comparar implementaciones y entender las diferencias entre plataformas.
+
+| Plataforma | Lenguaje | Voltaje | WiFi | UART | Notas |
+|---|---|---|---|---|---|
+| ESP32 | C++ (Arduino IDE) | 3.3V | ✅ | 3 puertos | Plataforma principal |
+| Arduino UNO | C++ (Arduino IDE) | 5V | ❌ | 1 puerto | Ideal para aprender |
+| Arduino Nano | C++ (Arduino IDE) | 5V | ❌ | 1 puerto | Compacto, igual que UNO |
+| Arduino Mega | C++ (Arduino IDE) | 5V | ❌ | 4 puertos | Más pines y UARTs |
+| Arduino R4 WiFi | C++ (Arduino IDE) | 3.3V | ✅ | 1 puerto | Factor de forma UNO + WiFi |
+| Raspberry Pi Pico W | MicroPython | 3.3V | ✅ | 2 puertos | RP2040 dual-core |
+
+> 📌 Referencia completa de pines: [`00_documentacion/plataformas/pines_por_plataforma.md`](./00_documentacion/plataformas/pines_por_plataforma.md)
+
+---
+
 ## Hardware disponible
 
 ### Microcontroladores y computadoras
 
-- ESP32
-- ESP8266
-- ESP32-CAM
-- Arduino R4 WiFi
-- Arduino UNO
-- Arduino Nano
-- Arduino Mega
-- Raspberry Pi 4
-- Raspberry Pi Pico W
-- Raspberry Pi Pico H
-- Raspberry Pi Zero
+- ESP32, ESP8266, ESP32-CAM
+- Arduino R4 WiFi, Arduino UNO, Arduino Nano, Arduino Mega
+- Raspberry Pi 4, Raspberry Pi Pico W, Raspberry Pi Pico H, Raspberry Pi Zero
 
 ### Sensores
 
-- MPU6050
-- TMP117
-- SHTC3
-- BMP581
-- OLED I2C
+- MPU6050, TMP117, SHTC3, BMP581, OLED I2C
 
 ### Componentes electrónicos
 
-- Motores DC
-- Protoboards
-- Resistencias
-- Capacitores
-- Diodos
-- LEDs
-- Cables jumper
-- Compuertas lógicas
+- Motores DC, Protoboards, Resistencias, Capacitores, Diodos, LEDs, Cables jumper, Compuertas lógicas
 
 ### Fabricación digital y herramientas
 
-- Impresora 3D FDM
-- Secador de filamento
-- Impresora 3D de resina
-- Estación de curado
-- CNC láser 2W
-- Estación de soldadura
-
-### Equipos de trabajo
-
-- PC principal
-- PC secundaria
-- Tablet
+- Impresora 3D FDM, Impresora 3D de resina, Estación de curado, CNC láser 2W, Estación de soldadura
 
 ---
 
@@ -111,7 +98,14 @@ Al finalizar esta fase se espera poder:
 
 ```txt
 00_documentacion/
+  conceptos/            — Definiciones técnicas de protocolos
+  plataformas/          — Referencia de pines por microcontrolador
+  troubleshooting/      — Errores comunes y soluciones
 01_uart/
+  uart_pc_esp32/        — ESP32 (C++ / Arduino IDE)        ✅ Completado
+  uart_pc_arduino_uno/  — Arduino UNO / Nano (C++ / Arduino IDE)
+  uart_pc_arduino_mega/ — Arduino Mega (C++ / Arduino IDE)
+  uart_pc_rpi_pico/     — Raspberry Pi Pico W (MicroPython)
 02_i2c/
 03_pwm/
 04_spi/
