@@ -29,8 +29,11 @@ void setup() {
   pinMode(IN1, OUTPUT);
   pinMode(IN2, OUTPUT);
 
-  ledcSetup(CANAL_PWM, FRECUENCIA, RESOLUCION);
-  ledcAttachPin(ENA, CANAL_PWM);
+  // Arduino-ESP32 3.x/4.x: configurar pin y canal en una sola llamada.
+  if (!ledcAttachChannel(ENA, FRECUENCIA, RESOLUCION, CANAL_PWM)) {
+    Serial.println("Error al configurar PWM");
+    while (true) { delay(1000); }
+  }
 
   detenerMotor();
 
@@ -45,7 +48,7 @@ void adelante(int velocidad) {
   velocidad = constrain(velocidad, 0, 255);
   digitalWrite(IN1, HIGH);
   digitalWrite(IN2, LOW);
-  ledcWrite(CANAL_PWM, velocidad);
+  ledcWriteChannel(CANAL_PWM, velocidad);
   Serial.print("Adelante | vel="); Serial.println(velocidad);
 }
 
@@ -53,14 +56,14 @@ void atras(int velocidad) {
   velocidad = constrain(velocidad, 0, 255);
   digitalWrite(IN1, LOW);
   digitalWrite(IN2, HIGH);
-  ledcWrite(CANAL_PWM, velocidad);
+  ledcWriteChannel(CANAL_PWM, velocidad);
   Serial.print("Atras    | vel="); Serial.println(velocidad);
 }
 
 void detenerMotor() {
   digitalWrite(IN1, LOW);
   digitalWrite(IN2, LOW);
-  ledcWrite(CANAL_PWM, 0);
+  ledcWriteChannel(CANAL_PWM, 0);
   Serial.println("Motor detenido");
 }
 

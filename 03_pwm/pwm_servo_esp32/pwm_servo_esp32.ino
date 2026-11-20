@@ -31,8 +31,11 @@ int gradosToDuty(int grados) {
 void setup() {
   Serial.begin(115200);
 
-  ledcSetup(CANAL_PWM, FRECUENCIA, RESOLUCION);
-  ledcAttachPin(SERVO_PIN, CANAL_PWM);
+  // Arduino-ESP32 3.x/4.x: configurar pin y canal en una sola llamada.
+  if (!ledcAttachChannel(SERVO_PIN, FRECUENCIA, RESOLUCION, CANAL_PWM)) {
+    Serial.println("Error al configurar PWM");
+    while (true) { delay(1000); }
+  }
 
   Serial.println("=== Servo PWM — ESP32 ===");
   Serial.println("Pin: GPIO13 | Canal: 1 | 50Hz | 16 bits");
@@ -42,7 +45,7 @@ void setup() {
 
 void moverAGrados(int grados) {
   grados = constrain(grados, 0, 180);
-  ledcWrite(CANAL_PWM, gradosToDuty(grados));
+  ledcWriteChannel(CANAL_PWM, gradosToDuty(grados));
   Serial.print("Servo -> "); Serial.print(grados); Serial.println("°");
   delay(500);
 }
