@@ -158,3 +158,34 @@ Actualmente enfocado en la **Fase 1: Comunicaciones en sistemas embebidos**.
 | Fase 3 | Control y movimiento | ⏳ Pendiente |
 | Fase 4 | Robots móviles autónomos | ⏳ Pendiente |
 | Fase 5 | Visión artificial y sistemas avanzados | ⏳ Pendiente |
+
+---
+
+## Necesidad que atiende y origen
+
+El proyecto parte de mi proceso de aprendizaje técnico en robótica competitiva. Busca reunir código, conexiones, errores y evidencias en un mismo lugar para facilitar la consulta y la reproducción de prácticas. Está dirigido a personas que aprenden electrónica, programación embebida y robótica, y que desean compartir sus avances.
+
+## Cómo comenzar
+
+1. Revisa la [metodología de trabajo](00_documentacion/metodologia_trabajo.md) y la [referencia de pines](00_documentacion/plataformas/pines_por_plataforma.md).
+2. Comienza con la [práctica UART entre PC y ESP32](01_uart/uart_pc_esp32/README.md), que incluye materiales, configuración, comandos y evidencia documentada.
+3. Descarga el repositorio y abre `01_uart/uart_pc_esp32/uart_pc_esp32.ino` en Arduino IDE.
+4. Sigue la configuración de placa y conexión indicada en esa práctica. Selecciona el puerto de tu computadora; el puerto documentado corresponde al equipo de la prueba original.
+5. Prueba los comandos y compara tus resultados con los documentados. Registra diferencias, errores y la placa utilizada.
+
+La práctica UART con ESP32 cuenta con resultados y fotografías en su documentación. La presencia de código en otras carpetas no implica que todas las prácticas hayan sido validadas físicamente.
+
+## Próximos pasos y colaboración
+
+Se busca ampliar las evidencias de las prácticas, completar instrucciones y registrar pruebas en distintas plataformas, avanzando progresivamente hacia sensores, control e integración de robots.
+
+Puedes proponer mejoras, reportar dificultades al reproducir una práctica, corregir documentación o aportar recursos propios. Consulta [CONTRIBUTING.md](CONTRIBUTING.md) antes de enviar una contribución.
+
+## Uso de inteligencia artificial
+
+Para adaptar la documentación al Laboratorio 6 del curso SINT-741 se utilizó ChatGPT como apoyo para revisar los requisitos, organizar los apartados del README, redactar una guía de contribución y preparar propuestas de Issue y Pull Request a partir del contenido existente. Este apoyo no constituye una validación del hardware ni de los resultados experimentales; las nuevas pruebas deben documentarse con evidencia.
+
+## Reflexión sobre la comunidad
+
+Para que otra persona pueda comprender, utilizar y mejorar este proyecto sin depender de su autora, necesita objetivos claros, materiales y conexiones identificados, instrucciones reproducibles, código accesible, evidencias y una distinción entre lo probado y lo pendiente. También necesita un canal para plantear dudas y un proceso de contribución que permita revisar y conservar los aprendizajes de otras personas.
+
