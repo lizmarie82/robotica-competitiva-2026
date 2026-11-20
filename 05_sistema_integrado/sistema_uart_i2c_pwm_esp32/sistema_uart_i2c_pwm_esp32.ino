@@ -73,7 +73,7 @@ void motorAdelante(int vel) {
   vel = constrain(vel, 0, 255);
   digitalWrite(IN1_PIN, HIGH);
   digitalWrite(IN2_PIN, LOW);
-  ledcWrite(LEDC_CANAL, vel);
+  ledcWriteChannel(LEDC_CANAL, vel);
   velocidad_pwm = vel;
   direccion_motor = "ADELANTE";
 }
@@ -82,7 +82,7 @@ void motorAtras(int vel) {
   vel = constrain(vel, 0, 255);
   digitalWrite(IN1_PIN, LOW);
   digitalWrite(IN2_PIN, HIGH);
-  ledcWrite(LEDC_CANAL, vel);
+  ledcWriteChannel(LEDC_CANAL, vel);
   velocidad_pwm = vel;
   direccion_motor = "ATRAS";
 }
@@ -90,7 +90,7 @@ void motorAtras(int vel) {
 void motorParar() {
   digitalWrite(IN1_PIN, LOW);
   digitalWrite(IN2_PIN, LOW);
-  ledcWrite(LEDC_CANAL, 0);
+  ledcWriteChannel(LEDC_CANAL, 0);
   velocidad_pwm = 0;
   direccion_motor = "PARADO";
 }
@@ -133,7 +133,7 @@ void procesarComando(String cmd) {
   else if (cmd.startsWith("LED ")) {
     int brillo = cmd.substring(4).toInt();
     brillo = constrain(brillo, 0, 255);
-    ledcWrite(LEDC_CANAL, brillo);
+    ledcWriteChannel(LEDC_CANAL, brillo);
     velocidad_pwm = brillo;
     Serial.print("LED brillo="); Serial.println(brillo);
   }
@@ -158,8 +158,11 @@ void setup() {
   pinMode(IN1_PIN, OUTPUT);
   pinMode(IN2_PIN, OUTPUT);
 
-  ledcSetup(LEDC_CANAL, 1000, 8);
-  ledcAttachPin(ENA_PIN, LEDC_CANAL);
+  // Arduino-ESP32 3.x/4.x: configurar pin y canal en una sola llamada.
+  if (!ledcAttachChannel(ENA_PIN, 1000, 8, LEDC_CANAL)) {
+    Serial.println("Error al configurar PWM");
+    while (true) { delay(1000); }
+  }
 
   iniciarMPU6050();
   motorParar();

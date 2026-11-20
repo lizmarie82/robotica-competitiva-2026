@@ -1,8 +1,8 @@
 // Práctica: PWM — LED Fade con ESP32
 // Objetivo: Controlar el brillo de un LED usando PWM con la API LEDC del ESP32.
 //
-// El ESP32 NO tiene analogWrite() nativo como Arduino.
-// Usa la API LEDC (LED Control) con 16 canales independientes.
+// Usa la API LEDC (LED Control) de Arduino-ESP32 3.x/4.x.
+// Esta práctica selecciona explícitamente el canal PWM.
 //
 // Conexión:
 //   LED anodo (+) -> Resistencia 220 Ohm -> GPIO 5
@@ -22,10 +22,11 @@ void setup() {
   Serial.begin(115200);
 
   // Configurar canal PWM
-  ledcSetup(CANAL_PWM, FRECUENCIA, RESOLUCION);
-
-  // Asociar el canal al pin físico
-  ledcAttachPin(LED_PIN, CANAL_PWM);
+  // Arduino-ESP32 3.x/4.x: configurar pin y canal en una sola llamada.
+  if (!ledcAttachChannel(LED_PIN, FRECUENCIA, RESOLUCION, CANAL_PWM)) {
+    Serial.println("Error al configurar PWM");
+    while (true) { delay(1000); }
+  }
 
   Serial.println("=== PWM LED Fade — ESP32 ===");
   Serial.println("Canal: 0 | Frecuencia: 5000Hz | Resolucion: 8 bits");
@@ -34,7 +35,7 @@ void setup() {
 
 void loop() {
   // Aplicar brillo al LED
-  ledcWrite(CANAL_PWM, brillo);
+  ledcWriteChannel(CANAL_PWM, brillo);
 
   Serial.print("Brillo: "); Serial.print(brillo);
   Serial.print("/255 (");
