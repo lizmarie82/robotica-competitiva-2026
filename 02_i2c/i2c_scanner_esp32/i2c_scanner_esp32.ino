@@ -58,10 +58,10 @@ void loop() {
   delay(5000);
 }
 
-// Identifica dispositivos comunes por su dirección I2C
+// Sugiere dispositivos por dirección; una dirección no identifica el modelo de forma única.
 String identificarDispositivo(byte dir) {
   switch (dir) {
-    case 0x68: return "MPU6050 (giroscopio/acelerometro) [AD0=LOW]";
+    case 0x68: return "Posibles: MPU6050 [AD0=LOW] o DS3231 RTC";
     case 0x69: return "MPU6050 (giroscopio/acelerometro) [AD0=HIGH]";
     case 0x48: return "TMP117 (temperatura) [ADD0=GND]";
     case 0x49: return "TMP117 (temperatura) [ADD0=VCC]";
@@ -71,7 +71,6 @@ String identificarDispositivo(byte dir) {
     case 0x3C: return "OLED SSD1306 128x64 [SA0=LOW]";
     case 0x3D: return "OLED SSD1306 128x64 [SA0=HIGH]";
     case 0x57: return "AT24C32 EEPROM (modulo RTC DS3231)";
-    case 0x68: return "DS3231 RTC";
     default:   return "Dispositivo desconocido";
   }
 }
